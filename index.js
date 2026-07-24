@@ -172,7 +172,7 @@ ${eClock} **Orario Apertura**
             .setDescription(embedDescription)
             .setImage('https://cdn.discordapp.com/attachments/1520423599884865536/1527221403391234058/standard_2.gif?ex=6a646b44&is=6a6319c4&hm=d74e595f42ceacd3bbff3dfdc2c17bf805d7eb8453d6a0dcdbdfe8a4aa84db43&');
 
-        // Riga con entrambi i pulsanti (Link Roblox + Modulo Richiesta Staff)
+        // Riga con entrambi i pulsanti (Link Roblox + Modulo Richiesta Staff con la tua emoji)
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setLabel('Accedi al Server')
@@ -182,7 +182,7 @@ ${eClock} **Orario Apertura**
                 .setCustomId('btn_richiesta_staff')
                 .setLabel('Richiesta Staff in Game')
                 .setStyle(ButtonStyle.Success) // Colore verde
-                .setEmoji('1525049423908831283')
+                .setEmoji('1521589524306722816')
         );
 
         await interaction.reply({ 
