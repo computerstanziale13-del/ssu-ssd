@@ -151,8 +151,8 @@ Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
 Lo staff è **presente e attivo** per garantire una sessione ottimale.
 ──────────────────────────
 
-<:verified2:1521589455310422097> **Partecipazione**
-Lo staff Chiede Massima **Partecipazione** e **Collaborazione** Da Parte vostra.
+<:emoji:1525053084261417067> **Partecipazione**
+Lo staff chiede massima **partecipazione** e **collaborazione** da parte vostra.
 
 <:shield:1521588388137013350> **Moderazione**
 La Moderazione è **Presente e Attiva** Per Assistenza !
