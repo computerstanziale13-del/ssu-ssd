@@ -138,41 +138,56 @@ Naples Italy RP • Centrale Notifiche Staff`
         const codiceAccesso = 'dqsaytem'; 
         const oraApertura = new Date().toLocaleTimeString('it-IT');
 
-        const eCircle = '<:ssu_circle:1521589524306722816>';
-        const eVerified1 = '<:verified1:1521587794340872193>';
-        const eKey = '<:key:1521593933271007465>';
-        const eVerified2 = '<:verified2:1521589455310422097>';
-        const eShield = '<:shield:1521588388137013350>';
-        const eClock = '<:clock:1521595170661859552>';
-
         const embedDescription = 
 `### Naples Italy Roleplay — SERVER APERTO
 
-${eCircle} **SSU - SERVER START UP**
+<:ssu_circle:1521589524306722816> **SSU - SERVER START UP**
 
-${eVerified1} **Nome Server:** \`Naples Italy Roleplay\`
-${eKey} **Codice Accesso:** \`${codiceAccesso}\`
+<:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
+<:key:1521593933271007465> **Codice Accesso:** \`{codiceAccesso}\` sostituito con ${codiceAccesso}
 
 ──────────────────────────
 Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
 Lo staff è **presente e attivo** per garantire una sessione ottimale.
 ──────────────────────────
 
-${eVerified2} **Partecipazione**
+<:verified2:1521589455310422097> **Partecipazione**
 Lo staff Chiede Massima **Partecipazione** e **Collaborazione** Da Parte vostra.
 
-${eShield} **Moderazione**
+<:shield:1521588388137013350> **Moderazione**
 La Moderazione è **Presente e Attiva** Per Assistenza !
 
-${eClock} **Orario Apertura**
+<:clock:1521595170661859552> **Orario Apertura**
+\`${oraApertura}\``;
+
+        // Versione pulita e corretta della descrizione con le emoji giuste
+        const embedDescriptionPulita = 
+`### Naples Italy Roleplay — SERVER APERTO
+
+<:ssu_circle:1521589524306722816> **SSU - SERVER START UP**
+
+<:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
+<:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
+
+──────────────────────────
+Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
+Lo staff è **presente e attivo** per garantire una sessione ottimale.
+──────────────────────────
+
+<:verified2:1521589455310422097> **Partecipazione**
+Lo staff Chiede Massima **Partecipazione** e **Collaborazione** Da Parte vostra.
+
+<:shield:1521588388137013350> **Moderazione**
+La Moderazione è **Presente e Attiva** Per Assistenza !
+
+<:clock:1521595170661859552> **Orario Apertura**
 \`${oraApertura}\``;
 
         const embed = new EmbedBuilder()
             .setColor('#2B2D31')
-            .setDescription(embedDescription)
+            .setDescription(embedDescriptionPulita)
             .setImage('https://cdn.discordapp.com/attachments/1520423599884865536/1527221403391234058/standard_2.gif?ex=6a646b44&is=6a6319c4&hm=d74e595f42ceacd3bbff3dfdc2c17bf805d7eb8453d6a0dcdbdfe8a4aa84db43&');
 
-        // Riga con entrambi i pulsanti (Link Roblox + Modulo Richiesta Staff con la tua emoji)
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setLabel('Accedi al Server')
@@ -181,12 +196,12 @@ ${eClock} **Orario Apertura**
             new ButtonBuilder()
                 .setCustomId('btn_richiesta_staff')
                 .setLabel('Richiesta Staff in Game')
-                .setStyle(ButtonStyle.Success) // Colore verde
+                .setStyle(ButtonStyle.Success)
                 .setEmoji('1521589524306722816')
         );
 
         await interaction.reply({ 
-            content: '@everyone Server Online — <:verificato:1521587794340872193> Vi Aspettiamo su Naples Italy Roleplay!', 
+            content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Naples Italy Roleplay!', 
             embeds: [embed], 
             components: [row] 
         });
