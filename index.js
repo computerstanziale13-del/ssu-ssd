@@ -141,7 +141,7 @@ Naples Italy RP • Centrale Notifiche Staff`
         const embedDescription = 
 `### Naples Italy Roleplay — SERVER APERTO
 
-<:ssu_circle:1521589524306722816> **SSU - SERVER START UP**
+<:StatusOnline:1521589524306722816> **SSU - SERVER START UP**
 
 <:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
