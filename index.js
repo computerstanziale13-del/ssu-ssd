@@ -144,29 +144,6 @@ Naples Italy RP • Centrale Notifiche Staff`
 <:ssu_circle:1521589524306722816> **SSU - SERVER START UP**
 
 <:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
-<:key:1521593933271007465> **Codice Accesso:** \`{codiceAccesso}\` sostituito con ${codiceAccesso}
-
-──────────────────────────
-Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
-Lo staff è **presente e attivo** per garantire una sessione ottimale.
-──────────────────────────
-
-<:verified2:1521589455310422097> **Partecipazione**
-Lo staff Chiede Massima **Partecipazione** e **Collaborazione** Da Parte vostra.
-
-<:shield:1521588388137013350> **Moderazione**
-La Moderazione è **Presente e Attiva** Per Assistenza !
-
-<:clock:1521595170661859552> **Orario Apertura**
-\`${oraApertura}\``;
-
-        // Versione pulita e corretta della descrizione con le emoji giuste
-        const embedDescriptionPulita = 
-`### Naples Italy Roleplay — SERVER APERTO
-
-<:ssu_circle:1521589524306722816> **SSU - SERVER START UP**
-
-<:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
@@ -185,7 +162,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
 
         const embed = new EmbedBuilder()
             .setColor('#2B2D31')
-            .setDescription(embedDescriptionPulita)
+            .setDescription(embedDescription)
             .setImage('https://cdn.discordapp.com/attachments/1520423599884865536/1527221403391234058/standard_2.gif?ex=6a646b44&is=6a6319c4&hm=d74e595f42ceacd3bbff3dfdc2c17bf805d7eb8453d6a0dcdbdfe8a4aa84db43&');
 
         const row = new ActionRowBuilder().addComponents(
