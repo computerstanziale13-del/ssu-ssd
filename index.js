@@ -141,7 +141,7 @@ Naples Italy RP • Centrale Notifiche Staff`
         const embedDescription = 
 `### Naples Italy Roleplay — SERVER APERTO
 
-<:StatusOnline:1521589524306722816> **SSU - SERVER START UP**
+<:emoji:1524957824315031703> **SSU - SERVER START UP**
 
 <:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
@@ -174,7 +174,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
                 .setCustomId('btn_richiesta_staff')
                 .setLabel('Richiesta Staff in Game')
                 .setStyle(ButtonStyle.Success)
-                .setEmoji('1521589524306722816')
+                .setEmoji('1524957824315031703')
         );
 
         await interaction.reply({ 
