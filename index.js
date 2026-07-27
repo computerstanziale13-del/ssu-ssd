@@ -15,12 +15,17 @@ const {
 } = require('discord.js');
 const express = require('express');
 
+// --- Asset Grafici (Logo Thumbnail e Banner Grande) ---
+const EMBED_THUMBNAIL_URL = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531402786598682824/IMG_2695.png?ex=6a69157c&is=6a67c3fc&hm=b39a6f487454937505d86f1c7180b0d0bddaa16e3c3e1f603ed24951fc392345&';
+const EMBED_BANNER_URL = 'https://cdn.discordapp.com/attachments/1518557352461340762/1531405936911061102/ChatGPT_Image_27_lug_2026_22_57_11.png?ex=6a69186b&is=6a67c6eb&hm=3e01d7f09ca1e12e86e127afa4a7d9bbea85d67d8b13465d3954e14006cb2f0a&';
+const ROLE_TO_PING_ID = '1520795545277562900'; // ID Ruolo da menzionare
+
 // Server Express per tenere attivo il bot su Render / UptimeRobot
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-    res.send('Il Bot SSU/SSD è online e operativo!');
+    res.send('Il Bot SSU/SSD di Italian Life RP è online e operativo!');
 });
 
 app.listen(port, () => {
@@ -90,7 +95,7 @@ Un cittadino ha inoltrato una segnalazione d'assistenza immediata direttamente d
 ⚠️ **Istruzioni per il Team Staff:**
 Un membro abilitato del team è pregato di entrare in gioco il prima possibile, verificare l'accaduto e moderare la situazione per garantire il corretto svolgimento della simulazione.
 
-Naples Italy RP • Centrale Notifiche Staff`
+Italian Life RP • Centrale Notifiche Staff`
             );
 
         await targetChannel.send({
@@ -139,11 +144,11 @@ Naples Italy RP • Centrale Notifiche Staff`
         const oraApertura = new Date().toLocaleTimeString('it-IT');
 
         const embedDescription = 
-`### Naples Italy Roleplay — SERVER APERTO
+`### Italian Life RP — SERVER APERTO
 
 <:emoji:1524957824315031703> **SSU - SERVER START UP**
 
-<:verified1:1521587794340872193> **Nome Server:** \`Naples Italy Roleplay\`
+<:verified1:1521587794340872193> **Nome Server:** \`Italian Life RP\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
@@ -163,7 +168,8 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
         const embed = new EmbedBuilder()
             .setColor('#2B2D31')
             .setDescription(embedDescription)
-            .setImage('https://cdn.discordapp.com/attachments/1520423599884865536/1527221403391234058/standard_2.gif?ex=6a646b44&is=6a6319c4&hm=d74e595f42ceacd3bbff3dfdc2c17bf805d7eb8453d6a0dcdbdfe8a4aa84db43&');
+            .setThumbnail(EMBED_THUMBNAIL_URL)
+            .setImage(EMBED_BANNER_URL);
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
@@ -178,7 +184,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
         );
 
         await interaction.reply({ 
-            content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Naples Italy Roleplay!', 
+            content: `<@&${ROLE_TO_PING_ID}> Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Italian Life RP!`, 
             embeds: [embed], 
             components: [row] 
         });
@@ -191,7 +197,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
         const customEmoji = '<:emoji_custom:1524956959944474624>';
 
         const embedDescription = 
-`### Naples Italy Roleplay — SERVER CHIUSO
+`### Italian Life RP — SERVER CHIUSO
 
 ${customEmoji} **SSD - SERVER SHUT DOWN**
 
@@ -206,10 +212,12 @@ Ci vediamo alla prossima apertura.
 
         const embed = new EmbedBuilder()
             .setColor('#E74C3C')
-            .setDescription(embedDescription);
+            .setDescription(embedDescription)
+            .setThumbnail(EMBED_THUMBNAIL_URL)
+            .setImage(EMBED_BANNER_URL);
 
         await interaction.reply({ 
-            content: `@everyone Server Chiuso — Grazie per la partecipazione su Naples Italy Roleplay!`, 
+            content: `<@&${ROLE_TO_PING_ID}> Server Chiuso — Grazie per la partecipazione su Italian Life RP!`, 
             embeds: [embed] 
         });
         return;
