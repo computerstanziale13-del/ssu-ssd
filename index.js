@@ -36,7 +36,8 @@ const client = new Client({
 
 // Immagini personalizzate
 const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531402786598682824/IMG_2695.png?ex=6a69157c&is=6a67c3fc&hm=b39a6f487454937505d86f1c7180b0d0bddaa16e3c3e1f603ed24951fc392345&';
-const EMBED_BANNER = 'https://cdn.discordapp.com/attachments/1518557352461340762/1531405936911061102/ChatGPT_Image_27_lug_2026_22_57_11.png?ex=6a69186b&is=6a67c6eb&hm=3e01d7f09ca1e12e86e127afa4a7d9bbea85d67d8b13465d3954e14006cb2f0a&';
+const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531300417546/IMG_5524.png?ex=6a6c7ab6&is=6a6b2936&hm=31ccd7c321527d3030831a638781aee189f0b62c820cb3e202c43b696915d981&';
+const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531551944815/IMG_5525.png?ex=6a6c7ab6&is=6a6b2936&hm=9d17bd7ac95d6409e80214ec55a0c4cf351eaed7a9da8f6e1810d7cc499d7dea&';
 
 client.once('ready', async () => {
     console.log(`🤖 Bot SSU/SSD avviato con successo come ${client.user.tag}`);
@@ -169,7 +170,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             .setColor('#2B2D31')
             .setThumbnail(EMBED_THUMBNAIL)
             .setDescription(embedDescription)
-            .setImage(EMBED_BANNER);
+            .setImage(BANNER_SSU);
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
@@ -214,7 +215,7 @@ Ci vediamo alla prossima apertura.
             .setColor('#E74C3C')
             .setThumbnail(EMBED_THUMBNAIL)
             .setDescription(embedDescription)
-            .setImage(EMBED_BANNER);
+            .setImage(BANNER_SSD);
 
         await interaction.reply({ 
             content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Life RP!`, 
