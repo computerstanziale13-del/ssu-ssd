@@ -34,6 +34,15 @@ const client = new Client({
     ]
 });
 
+// --- GESTIONE ERRORI GLOBALI PER EVITARE CRASH (EXIT CODE 1) ---
+client.on('error', error => {
+    console.error('⚠️ Errore del client Discord catturato:', error);
+});
+
+process.on('unhandledRejection', error => {
+    console.error('⚠️ Promessa non gestita catturata:', error);
+});
+
 // Immagini personalizzate
 const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531402786598682824/IMG_2695.png?ex=6a69157c&is=6a67c3fc&hm=b39a6f487454937505d86f1c7180b0d0bddaa16e3c3e1f603ed24951fc392345&';
 const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531300417546/IMG_5524.png?ex=6a6c7ab6&is=6a6b2936&hm=31ccd7c321527d3030831a638781aee189f0b62c820cb3e202c43b696915d981&';
