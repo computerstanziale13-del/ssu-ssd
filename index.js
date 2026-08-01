@@ -27,6 +27,18 @@ app.listen(port, () => {
     console.log(`🌐 Server web in ascolto sulla porta ${port}`);
 });
 
+// --- SISTEMA DI AUTO-PING PER EVITARE L'IBERNAZIONE SU RENDER ---
+const SELF_URL = 'https://ssu-ssd.onrender.com';
+
+setInterval(async () => {
+    try {
+        await fetch(SELF_URL);
+        console.log('🔄 Auto-ping eseguito con successo per mantenere attivo il bot.');
+    } catch (err) {
+        console.error('⚠️ Errore durante l\'auto-ping:', err.message);
+    }
+}, 4 * 60 * 1000); // Esegue una richiesta ogni 4 minuti
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
