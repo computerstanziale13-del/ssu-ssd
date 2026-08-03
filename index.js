@@ -56,7 +56,7 @@ process.on('unhandledRejection', error => {
 });
 
 // Immagini personalizzate
-const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531402786598682824/IMG_2695.png?ex=6a69157c&is=6a67c3fc&hm=b39a6f487454937505d86f1c7180b0d0bddaa16e3c3e1f603ed24951fc392345&';
+const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1496592684721246208/1533894848791449700/ChatGPT_Image_1_ago_2026_18_44_18.png?ex=6a722666&is=6a70d4e6&hm=27e6038cfafb941b815a6b29547ce45b2599f9376ad04d92e0db8a0ac9d72be3&';
 const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531300417546/IMG_5524.png?ex=6a6c7ab6&is=6a6b2936&hm=31ccd7c321527d3030831a638781aee189f0b62c820cb3e202c43b696915d981&';
 const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531551944815/IMG_5525.png?ex=6a6c7ab6&is=6a6b2936&hm=9d17bd7ac95d6409e80214ec55a0c4cf351eaed7a9da8f6e1810d7cc499d7dea&';
 
@@ -118,7 +118,7 @@ Un cittadino ha inoltrato una segnalazione d'assistenza immediata direttamente d
 ⚠️ **Istruzioni per il Team Staff:**
 Un membro abilitato del team è pregato di entrare in gioco il prima possibile, verificare l'accaduto e moderare la situazione per garantire il corretto svolgimento della simulazione.
 
-Italian Life RP • Centrale Notifiche Staff`
+Italian Country • Centrale Notifiche Staff`
                 );
 
             await targetChannel.send({
@@ -167,11 +167,11 @@ Italian Life RP • Centrale Notifiche Staff`
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
-`### Italian Life RP — SERVER APERTO
+`### Italian Country — SERVER APERTO
 
 <:emoji:1524957824315031703> **SSU - SERVER START UP**
 
-<:verified1:1521587794340872193> **Nome Server:** \`Italian Life RP\`
+<:verified1:1521587794340872193> **Nome Server:** \`Italian Country\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
@@ -207,7 +207,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             );
 
             await interaction.reply({ 
-                content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Italian Life RP!', 
+                content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Italian Country!', 
                 embeds: [embed], 
                 components: [row] 
             });
@@ -220,7 +220,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             const customEmoji = '<:emoji_custom:1524956959944474624>';
 
             const embedDescription = 
-`### Italian Life RP — SERVER CHIUSO
+`### Italian Country — SERVER CHIUSO
 
 ${customEmoji} **SSD - SERVER SHUT DOWN**
 
@@ -240,7 +240,7 @@ Ci vediamo alla prossima apertura.
                 .setImage(BANNER_SSD);
 
             await interaction.reply({ 
-                content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Life RP!`, 
+                content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Country!`, 
                 embeds: [embed] 
             });
             return;
