@@ -55,10 +55,9 @@ process.on('unhandledRejection', error => {
     console.error('⚠️ Promessa non gestita catturata:', error);
 });
 
-// Immagini personalizzate
+// Immagini personalizzate (Banner aggiornato per SSU e SSD)
 const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1496592684721246208/1533894848791449700/ChatGPT_Image_1_ago_2026_18_44_18.png?ex=6a722666&is=6a70d4e6&hm=27e6038cfafb941b815a6b29547ce45b2599f9376ad04d92e0db8a0ac9d72be3&';
-const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531300417546/IMG_5524.png?ex=6a6c7ab6&is=6a6b2936&hm=31ccd7c321527d3030831a638781aee189f0b62c820cb3e202c43b696915d981&';
-const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1531402756269805770/1531792531551944815/IMG_5525.png?ex=6a6c7ab6&is=6a6b2936&hm=9d17bd7ac95d6409e80214ec55a0c4cf351eaed7a9da8f6e1810d7cc499d7dea&';
+const BANNER_URL = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
 
 client.once('ready', async () => {
     console.log(`🤖 Bot SSU/SSD avviato con successo come ${client.user.tag}`);
@@ -192,7 +191,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
                 .setColor('#2B2D31')
                 .setThumbnail(EMBED_THUMBNAIL)
                 .setDescription(embedDescription)
-                .setImage(BANNER_SSU);
+                .setImage(BANNER_URL);
 
             const row = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
@@ -237,7 +236,7 @@ Ci vediamo alla prossima apertura.
                 .setColor('#E74C3C')
                 .setThumbnail(EMBED_THUMBNAIL)
                 .setDescription(embedDescription)
-                .setImage(BANNER_SSD);
+                .setImage(BANNER_URL);
 
             await interaction.reply({ 
                 content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Country!`, 
