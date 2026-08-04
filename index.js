@@ -55,9 +55,14 @@ process.on('unhandledRejection', error => {
     console.error('⚠️ Promessa non gestita catturata:', error);
 });
 
-// Immagini personalizzate (Banner aggiornato per SSU e SSD)
+// Immagini personalizzate
 const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1496592684721246208/1533894848791449700/ChatGPT_Image_1_ago_2026_18_44_18.png?ex=6a722666&is=6a70d4e6&hm=27e6038cfafb941b815a6b29547ce45b2599f9376ad04d92e0db8a0ac9d72be3&';
-const BANNER_URL = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
+
+// Banner SSU aggiornato con il nuovo link che hai fornito
+const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
+
+// Banner SSD (puoi modificarlo con un altro link se vuoi, al momento usa sempre il nuovo)
+const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
 
 client.once('ready', async () => {
     console.log(`🤖 Bot SSU/SSD avviato con successo come ${client.user.tag}`);
@@ -191,7 +196,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
                 .setColor('#2B2D31')
                 .setThumbnail(EMBED_THUMBNAIL)
                 .setDescription(embedDescription)
-                .setImage(BANNER_URL);
+                .setImage(BANNER_SSU);
 
             const row = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
@@ -236,7 +241,7 @@ Ci vediamo alla prossima apertura.
                 .setColor('#E74C3C')
                 .setThumbnail(EMBED_THUMBNAIL)
                 .setDescription(embedDescription)
-                .setImage(BANNER_URL);
+                .setImage(BANNER_SSD);
 
             await interaction.reply({ 
                 content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Country!`, 
