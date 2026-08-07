@@ -57,11 +57,7 @@ process.on('unhandledRejection', error => {
 
 // Immagini personalizzate
 const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1496592684721246208/1533894848791449700/ChatGPT_Image_1_ago_2026_18_44_18.png?ex=6a722666&is=6a70d4e6&hm=27e6038cfafb941b815a6b29547ce45b2599f9376ad04d92e0db8a0ac9d72be3&';
-
-// Banner SSU aggiornato con il nuovo link che hai fornito
 const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
-
-// Banner SSD (puoi modificarlo con un altro link se vuoi, al momento usa sempre il nuovo)
 const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
 
 client.once('ready', async () => {
@@ -70,18 +66,26 @@ client.once('ready', async () => {
     const commands = [
         new SlashCommandBuilder()
             .setName('ssu')
-            .setDescription('Avvia l\'annuncio di Server Start Up (SSU)')
+            .setDescription('Avvia l\'annuncio di Server Start Up (SSU) per Emergency Hamburg')
             .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
         new SlashCommandBuilder()
             .setName('ssd')
-            .setDescription('Avvia l\'annuncio di Server Shut Down (SSD)')
+            .setDescription('Avvia l\'annuncio di Server Shut Down (SSD) per Emergency Hamburg')
+            .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+        new SlashCommandBuilder()
+            .setName('ssu-erlc')
+            .setDescription('Avvia l\'annuncio di Server Start Up (SSU) per ER:LC')
+            .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+        new SlashCommandBuilder()
+            .setName('ssd-erlc')
+            .setDescription('Avvia l\'annuncio di Server Shut Down (SSD) per ER:LC')
             .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     ];
 
     const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     try {
         await rest.put(Routes.applicationCommands(client.user.id), { body: commands });
-        console.log('✅ Comandi /ssu e /ssd registrati con successo!');
+        console.log('✅ Comandi /ssu, /ssd, /ssu-erlc e /ssd-erlc registrati con successo!');
     } catch (err) {
         console.error('❌ Errore nella registrazione dei comandi:', err);
     }
@@ -165,7 +169,7 @@ Italian Country • Centrale Notifiche Staff`
 
         if (!interaction.isChatInputCommand()) return;
 
-        // --- COMANDO SSU (Server Start Up) CON DOPPIO PULSANTE ---
+        // --- COMANDO SSU EMERGENCY HAMBURG (Inalterato) ---
         if (interaction.commandName === 'ssu') {
             const codiceAccesso = 'WERBEDVZ'; 
             const oraApertura = new Date().toLocaleTimeString('it-IT');
@@ -218,7 +222,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             return;
         }
 
-        // --- COMANDO SSD (Server Shut Down) SENZA PULSANTI ---
+        // --- COMANDO SSD EMERGENCY HAMBURG (Inalterato) ---
         if (interaction.commandName === 'ssd') {
             const oraChiusura = new Date().toLocaleTimeString('it-IT');
             const customEmoji = '<:emoji_custom:1524956959944474624>';
@@ -245,6 +249,76 @@ Ci vediamo alla prossima apertura.
 
             await interaction.reply({ 
                 content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Country!`, 
+                embeds: [embed] 
+            });
+            return;
+        }
+
+        // --- COMANDO SSU ER:LC (Senza codice d'invito e link server) ---
+        if (interaction.commandName === 'ssu-erlc') {
+            const oraApertura = new Date().toLocaleTimeString('it-IT');
+
+            const embedDescription = 
+`### Italian Country RP [ER:LC] — SERVER APERTO
+
+<:emoji:1524957824315031703> **SSU - SERVER START UP**
+
+<:verified1:1521587794340872193> **Nome Server:** \`Italian Country RP [ER:LC]\`
+
+──────────────────────────
+Entrate in gioco, ricordiamo di seguire il nostro **regolamento** Ufficiale.
+Lo staff è **presente e attivo** per garantire una sessione ottimale.
+──────────────────────────
+
+<:emoji:1525053084261417067> **Partecipazione**
+Lo staff chiede massima **partecipazione** e **collaborazione** da parte vostra.
+
+<:shield:1521588388137013350> **Moderazione**
+La Moderazione è **Presente e Attiva** Per Assistenza !
+
+<:clock:1521595170661859552> **Orario Apertura**
+\`${oraApertura}\``;
+
+            const embed = new EmbedBuilder()
+                .setColor('#2B2D31')
+                .setThumbnail(EMBED_THUMBNAIL)
+                .setDescription(embedDescription)
+                .setImage(BANNER_SSU);
+
+            await interaction.reply({ 
+                content: '@everyone Server Online (ER:LC) — <:verified1:1521587794340872193> Vi Aspettiamo su Italian Country RP [ER:LC]!', 
+                embeds: [embed] 
+            });
+            return;
+        }
+
+        // --- COMANDO SSD ER:LC ---
+        if (interaction.commandName === 'ssd-erlc') {
+            const oraChiusura = new Date().toLocaleTimeString('it-IT');
+            const customEmoji = '<:emoji_custom:1524956959944474624>';
+
+            const embedDescription = 
+`### Italian Country RP [ER:LC] — SERVER CHIUSO
+
+${customEmoji} **SSD - SERVER SHUT DOWN**
+
+🔒 **Stato Sessione:** \`Terminata\`
+⏱️ **Orario Chiusura:** \`${oraChiusura}\`
+
+──────────────────────────
+La sessione di gioco ER:LC è ufficialmente conclusa.
+Grazie a tutti per aver partecipato e aver reso il Roleplay di alto livello!
+Ci vediamo alla prossima apertura.
+──────────────────────────`;
+
+            const embed = new EmbedBuilder()
+                .setColor('#E74C3C')
+                .setThumbnail(EMBED_THUMBNAIL)
+                .setDescription(embedDescription)
+                .setImage(BANNER_SSD);
+
+            await interaction.reply({ 
+                content: `@everyone Server Chiuso (ER:LC) — Grazie per la partecipazione su Italian Country RP [ER:LC]!`, 
                 embeds: [embed] 
             });
             return;
