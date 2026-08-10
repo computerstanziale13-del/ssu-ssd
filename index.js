@@ -15,7 +15,7 @@ const {
 } = require('discord.js');
 const express = require('express');
 
-// Server Express per tenere attivo il bot su Render / UptimeRobot
+// Server Express per mantenere attivo il Web Service su Render
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -27,17 +27,20 @@ app.listen(port, () => {
     console.log(`🌐 Server web in ascolto sulla porta ${port}`);
 });
 
-// --- SISTEMA DI AUTO-PING PER EVITARE L'IBERNAZIONE SU RENDER ---
-const SELF_URL = 'https://ssu-ssd.onrender.com';
+// --- AUTO-PING SICURO (Gestito con gestione errori per evitare il crash del processo) ---
+const SELF_URL = process.env.RENDER_EXTERNAL_URL || 'https://ssu-ssd.onrender.com';
 
 setInterval(async () => {
     try {
-        await fetch(SELF_URL);
-        console.log('🔄 Auto-ping eseguito con successo per mantenere attivo il bot.');
+        // Utilizziamo un blocco try/catch dedicato per evitare Unhandled Rejections
+        const res = await globalThis.fetch(SELF_URL).catch(() => null);
+        if (res && res.ok) {
+            console.log('🔄 Auto-ping eseguito con successo per mantenere attivo il bot.');
+        }
     } catch (err) {
-        console.error('⚠️ Errore durante l\'auto-ping:', err.message);
+        console.warn('⚠️ Avviso durante l\'auto-ping (ignorato per evitare crash):', err.message);
     }
-}, 4 * 60 * 1000); // Esegue una richiesta ogni 4 minuti
+}, 4 * 60 * 1000); // 4 minuti
 
 const client = new Client({
     intents: [
@@ -46,13 +49,22 @@ const client = new Client({
     ]
 });
 
-// --- GESTIONE ERRORI GLOBALI PER EVITARE CRASH (EXIT CODE 1) ---
+// --- GESTIONE ERRORI GLOBALI PER PREVENIRE CRASH FATALI ---
 client.on('error', error => {
     console.error('⚠️ Errore del client Discord catturato:', error);
 });
 
 process.on('unhandledRejection', error => {
+    // Ignora gli errori di interazione scaduta (10062) per evitare il blocco del processo
+    if (error?.code === 10062) {
+        console.warn('⚠️ Interazione scaduta ignorata (Unknown interaction).');
+        return;
+    }
     console.error('⚠️ Promessa non gestita catturata:', error);
+});
+
+process.on('uncaughtException', error => {
+    console.error('⚠️ Eccezione non catturata:', error);
 });
 
 // Immagini personalizzate
@@ -82,7 +94,8 @@ client.once('ready', async () => {
             .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     ];
 
-    const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+    const tokenToUse = process.env.TOKEN;
+    const rest = new REST({ version: '10' }).setToken(tokenToUse);
     try {
         await rest.put(Routes.applicationCommands(client.user.id), { body: commands });
         console.log('✅ Comandi /ssu, /ssd, /ssu-erlc e /ssd-erlc registrati con successo!');
@@ -93,17 +106,17 @@ client.once('ready', async () => {
 
 client.on('interactionCreate', async interaction => {
     try {
-        // --- GESTIONE MODAL SUBMIT (Invio Modulo Richiesta Staff) ---
+        // --- GESTIONE MODAL SUBMIT ---
         if (interaction.isModalSubmit() && interaction.customId === 'modal_staff_game') {
             const robloxName = interaction.fields.getTextInputValue('roblox_name');
             const motif = interaction.fields.getTextInputValue('motif');
             const oraSegnalazione = new Date().toLocaleTimeString('it-IT');
-            const channelId = '1521601801227604038'; // Canale notifiche staff
-            const staffRoleId = '1518557087347638403'; // Ruolo staff da pingare
+            const channelId = '1521601801227604038';
+            const staffRoleId = '1518557087347638403';
 
             const targetChannel = interaction.guild.channels.cache.get(channelId);
             if (!targetChannel) {
-                return await interaction.reply({ content: '❌ Errore: Canale delle notifiche staff non trovato!', ephemeral: true });
+                return await interaction.reply({ content: '❌ Errore: Canale delle notifiche staff non trovato!', flags: 64 });
             }
 
             const embedRichiesta = new EmbedBuilder()
@@ -134,7 +147,7 @@ Italian Country • Centrale Notifiche Staff`
                 embeds: [embedRichiesta]
             });
 
-            return await interaction.reply({ content: '✅ Richiesta di supporto inviata con successo al team staff!', ephemeral: true });
+            return await interaction.reply({ content: '✅ Richiesta di supporto inviata con successo al team staff!', flags: 64 });
         }
 
         // --- GESTIONE PULSANTI ---
@@ -169,7 +182,7 @@ Italian Country • Centrale Notifiche Staff`
 
         if (!interaction.isChatInputCommand()) return;
 
-        // --- COMANDO SSU EMERGENCY HAMBURG (Inalterato) ---
+        // --- COMANDO SSU EMERGENCY HAMBURG ---
         if (interaction.commandName === 'ssu') {
             const codiceAccesso = 'WERBEDVZ'; 
             const oraApertura = new Date().toLocaleTimeString('it-IT');
@@ -222,7 +235,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             return;
         }
 
-        // --- COMANDO SSD EMERGENCY HAMBURG (Inalterato) ---
+        // --- COMANDO SSD EMERGENCY HAMBURG ---
         if (interaction.commandName === 'ssd') {
             const oraChiusura = new Date().toLocaleTimeString('it-IT');
             const customEmoji = '<:emoji_custom:1524956959944474624>';
@@ -254,7 +267,7 @@ Ci vediamo alla prossima apertura.
             return;
         }
 
-        // --- COMANDO SSU ER:LC (Senza codice d'invito e link server) ---
+        // --- COMANDO SSU ER:LC ---
         if (interaction.commandName === 'ssu-erlc') {
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
@@ -325,7 +338,8 @@ Ci vediamo alla prossima apertura.
         }
 
     } catch (err) {
-        console.error('⚠️ Errore durante la gestione di un\'interazione:', err.message);
+        if (err?.code === 10062) return; // Ignora silenziosamente le interazioni scadute
+        console.error('⚠️ Errore durante la gestione di un\'interazione:', err);
     }
 });
 
