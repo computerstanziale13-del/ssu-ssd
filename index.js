@@ -184,7 +184,7 @@ Italian Country • Centrale Notifiche Staff`
 
         // --- COMANDO SSU EMERGENCY HAMBURG ---
         if (interaction.commandName === 'ssu') {
-            const codiceAccesso = 'WERBEDVZ'; 
+            const codiceAccesso = '1unzu600'; 
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
