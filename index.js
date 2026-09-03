@@ -83,14 +83,6 @@ client.once('ready', async () => {
         new SlashCommandBuilder()
             .setName('ssd')
             .setDescription('Avvia l\'annuncio di Server Shut Down (SSD) per Emergency Hamburg')
-            .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
-        new SlashCommandBuilder()
-            .setName('ssu-erlc')
-            .setDescription('Avvia l\'annuncio di Server Start Up (SSU) per ER:LC')
-            .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
-        new SlashCommandBuilder()
-            .setName('ssd-erlc')
-            .setDescription('Avvia l\'annuncio di Server Shut Down (SSD) per ER:LC')
             .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     ];
 
@@ -98,7 +90,7 @@ client.once('ready', async () => {
     const rest = new REST({ version: '10' }).setToken(tokenToUse);
     try {
         await rest.put(Routes.applicationCommands(client.user.id), { body: commands });
-        console.log('✅ Comandi /ssu, /ssd, /ssu-erlc e /ssd-erlc registrati con successo!');
+        console.log('✅ Comandi /ssu e /ssd registrati con successo!');
     } catch (err) {
         console.error('❌ Errore nella registrazione dei comandi:', err);
     }
@@ -111,8 +103,8 @@ client.on('interactionCreate', async interaction => {
             const robloxName = interaction.fields.getTextInputValue('roblox_name');
             const motif = interaction.fields.getTextInputValue('motif');
             const oraSegnalazione = new Date().toLocaleTimeString('it-IT');
-            const channelId = '1542488615232348220';
-            const staffRoleId = '1542488319739559957';
+            const channelId = '1521601801227604038';
+            const staffRoleId = '1518557087347638403';
 
             const targetChannel = interaction.guild.channels.cache.get(channelId);
             if (!targetChannel) {
@@ -184,15 +176,15 @@ Molise RP • Centrale Notifiche Staff`
 
         // --- COMANDO SSU EMERGENCY HAMBURG ---
         if (interaction.commandName === 'ssu') {
-            const codiceAccesso = '06zx6fba'; 
+            const codiceAccesso = '1unzu600'; 
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
 `### Molise RP — SERVER APERTO
 
-<:molise:1545037819087425636> **SSU - SERVER START UP**
+<:emoji:1524957824315031703> **SSU - SERVER START UP**
 
-<:685951info:1545022596221771836> **Nome Server:** \`Molise RP\`
+<:verified1:1521587794340872193> **Nome Server:** \`Molise RP\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
@@ -200,13 +192,13 @@ Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
 Lo staff è **presente e attivo** per garantire una sessione ottimale.
 ──────────────────────────
 
-<:361019admin:1545022647178633286> **Partecipazione**
+<:emoji:1525053084261417067> **Partecipazione**
 Lo staff chiede massima **partecipazione** e **collaborazione** da parte vostra.
 
-<:green:1545038777628495993> **Moderazione**
+<:shield:1521588388137013350> **Moderazione**
 La Moderazione è **Presente e Attiva** Per Assistenza !
 
-<:685951info:1545022596221771836> **Orario Apertura**
+<:clock:1521595170661859552> **Orario Apertura**
 \`${oraApertura}\``;
 
             const embed = new EmbedBuilder()
@@ -224,7 +216,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
                     .setCustomId('btn_richiesta_staff')
                     .setLabel('Richiesta Staff in Game')
                     .setStyle(ButtonStyle.Success)
-                    .setEmoji('1524957824315031703')
+                    .setEmoji('1545037819087425636')
             );
 
             await interaction.reply({ 
@@ -262,76 +254,6 @@ Ci vediamo alla prossima apertura.
 
             await interaction.reply({ 
                 content: `@everyone Server Chiuso — Grazie per la partecipazione su Molise RP!`, 
-                embeds: [embed] 
-            });
-            return;
-        }
-
-        // --- COMANDO SSU ER:LC ---
-        if (interaction.commandName === 'ssu-erlc') {
-            const oraApertura = new Date().toLocaleTimeString('it-IT');
-
-            const embedDescription = 
-`### Molise RP [ER:LC] — SERVER APERTO
-
-<:emoji:1524957824315031703> **SSU - SERVER START UP**
-
-<:verified1:1521587794340872193> **Nome Server:** \`Molise RP [ER:LC]\`
-
-──────────────────────────
-Entrate in gioco, ricordiamo di seguire il nostro **regolamento** Ufficiale.
-Lo staff è **presente e attivo** per garantire una sessione ottimale.
-──────────────────────────
-
-<:emoji:1525053084261417067> **Partecipazione**
-Lo staff chiede massima **partecipazione** e **collaborazione** da parte vostra.
-
-<:shield:1521588388137013350> **Moderazione**
-La Moderazione è **Presente e Attiva** Per Assistenza !
-
-<:clock:1521595170661859552> **Orario Apertura**
-\`${oraApertura}\``;
-
-            const embed = new EmbedBuilder()
-                .setColor('#2B2D31')
-                .setThumbnail(EMBED_THUMBNAIL)
-                .setDescription(embedDescription)
-                .setImage(BANNER_SSU);
-
-            await interaction.reply({ 
-                content: '@everyone Server Online (ER:LC) — <:verified1:1521587794340872193> Vi Aspettiamo su Molise RP [ER:LC]!', 
-                embeds: [embed] 
-            });
-            return;
-        }
-
-        // --- COMANDO SSD ER:LC ---
-        if (interaction.commandName === 'ssd-erlc') {
-            const oraChiusura = new Date().toLocaleTimeString('it-IT');
-            const customEmoji = '<:emoji_custom:1524956959944474624>';
-
-            const embedDescription = 
-`### Molise RP [ER:LC] — SERVER CHIUSO
-
-${customEmoji} **SSD - SERVER SHUT DOWN**
-
-🔒 **Stato Sessione:** \`Terminata\`
-⏱️ **Orario Chiusura:** \`${oraChiusura}\`
-
-──────────────────────────
-La sessione di gioco ER:LC è ufficialmente conclusa.
-Grazie a tutti per aver partecipato e aver reso il Roleplay di alto livello!
-Ci vediamo alla prossima apertura.
-──────────────────────────`;
-
-            const embed = new EmbedBuilder()
-                .setColor('#E74C3C')
-                .setThumbnail(EMBED_THUMBNAIL)
-                .setDescription(embedDescription)
-                .setImage(BANNER_SSD);
-
-            await interaction.reply({ 
-                content: `@everyone Server Chiuso (ER:LC) — Grazie per la partecipazione su Molise RP [ER:LC]!`, 
                 embeds: [embed] 
             });
             return;
