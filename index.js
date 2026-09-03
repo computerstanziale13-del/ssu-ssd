@@ -176,29 +176,29 @@ Molise RP • Centrale Notifiche Staff`
 
         // --- COMANDO SSU EMERGENCY HAMBURG ---
         if (interaction.commandName === 'ssu') {
-            const codiceAccesso = '1unzu600'; 
+            const codiceAccesso = '06zx6fba'; 
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
 `### Molise RP — SERVER APERTO
 
-<:emoji:1524957824315031703> **SSU - SERVER START UP**
+<:molise:1545037819087425636> **SSU - SERVER START UP**
 
-<:verified1:1521587794340872193> **Nome Server:** \`Molise RP\`
-<:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
+<:info1:1545022596221771836> **Nome Server:** \`Molise RP\`
+<:whitemod:1545020693253460039> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
 Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
 Lo staff è **presente e attivo** per garantire una sessione ottimale.
 ──────────────────────────
 
-<:emoji:1525053084261417067> **Partecipazione**
+<:admin1:1545022647178633286> **Partecipazione**
 Lo staff chiede massima **partecipazione** e **collaborazione** da parte vostra.
 
-<:shield:1521588388137013350> **Moderazione**
+<:green:1545038777628495993> **Moderazione**
 La Moderazione è **Presente e Attiva** Per Assistenza !
 
-<:clock:1521595170661859552> **Orario Apertura**
+<:info1:1545022596221771836> **Orario Apertura**
 \`${oraApertura}\``;
 
             const embed = new EmbedBuilder()
@@ -220,7 +220,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             );
 
             await interaction.reply({ 
-                content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Molise RP!', 
+                content: '@everyone Server Online — <:molise:1545037819087425636> Vi Aspettiamo su Molise RP!', 
                 embeds: [embed], 
                 components: [row] 
             });
