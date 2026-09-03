@@ -103,8 +103,8 @@ client.on('interactionCreate', async interaction => {
             const robloxName = interaction.fields.getTextInputValue('roblox_name');
             const motif = interaction.fields.getTextInputValue('motif');
             const oraSegnalazione = new Date().toLocaleTimeString('it-IT');
-            const channelId = '1521601801227604038';
-            const staffRoleId = '1518557087347638403';
+            const channelId = '1542488615232348220';
+            const staffRoleId = '1542488319739559957';
 
             const targetChannel = interaction.guild.channels.cache.get(channelId);
             if (!targetChannel) {
