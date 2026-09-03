@@ -190,9 +190,9 @@ Molise RP • Centrale Notifiche Staff`
             const embedDescription = 
 `### Molise RP — SERVER APERTO
 
-<:emoji:1524957824315031703> **SSU - SERVER START UP**
+<:molise:1545037819087425636> **SSU - SERVER START UP**
 
-<:verified1:1521587794340872193> **Nome Server:** \`Molise RP\`
+<:685951info:1545022596221771836> **Nome Server:** \`Molise RP\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
@@ -200,13 +200,13 @@ Entra , ricordiamo di seguire il nostro **regolamento** Ufficiale.
 Lo staff è **presente e attivo** per garantire una sessione ottimale.
 ──────────────────────────
 
-<:emoji:1525053084261417067> **Partecipazione**
+<:361019admin:1545022647178633286> **Partecipazione**
 Lo staff chiede massima **partecipazione** e **collaborazione** da parte vostra.
 
-<:shield:1521588388137013350> **Moderazione**
+<:green:1545038777628495993> **Moderazione**
 La Moderazione è **Presente e Attiva** Per Assistenza !
 
-<:clock:1521595170661859552> **Orario Apertura**
+<:685951info:1545022596221771836> **Orario Apertura**
 \`${oraApertura}\``;
 
             const embed = new EmbedBuilder()
