@@ -68,9 +68,9 @@ process.on('uncaughtException', error => {
 });
 
 // Immagini personalizzate
-const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1496592684721246208/1533894848791449700/ChatGPT_Image_1_ago_2026_18_44_18.png?ex=6a722666&is=6a70d4e6&hm=27e6038cfafb941b815a6b29547ce45b2599f9376ad04d92e0db8a0ac9d72be3&';
-const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
-const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1530001472492933191/1534295243891937556/46c2a86293a7fd82cac1adb46402e54e.webp?ex=6a739b4b&is=6a7249cb&hm=623aac4851c576d2c56cea9e2270dc3a0915be2fda4221c92318c3805360a017&';
+const EMBED_THUMBNAIL = 'https://cdn.discordapp.com/attachments/1532820317112893662/1545010053935800360/ChatGPT_Image_1_set_2026_21_28_29.png?ex=6a9a963d&is=6a9944bd&hm=0de62600ef2e833f064758a4a2b79295956fcdc1589acefe47fdb7eb08d15499&';
+const BANNER_SSU = 'https://cdn.discordapp.com/attachments/1532820317112893662/1545010054514745435/ChatGPT_Image_1_set_2026_21_33_32.png?ex=6a9a963d&is=6a9944bd&hm=1494623ce38bc64dc40dc8b5c6f66253cef29a8aa40edff8c35964d5e8acaca6&';
+const BANNER_SSD = 'https://cdn.discordapp.com/attachments/1532820317112893662/1545010054514745435/ChatGPT_Image_1_set_2026_21_33_32.png?ex=6a9a963d&is=6a9944bd&hm=1494623ce38bc64dc40dc8b5c6f66253cef29a8aa40edff8c35964d5e8acaca6&';
 
 client.once('ready', async () => {
     console.log(`🤖 Bot SSU/SSD avviato con successo come ${client.user.tag}`);
@@ -111,8 +111,8 @@ client.on('interactionCreate', async interaction => {
             const robloxName = interaction.fields.getTextInputValue('roblox_name');
             const motif = interaction.fields.getTextInputValue('motif');
             const oraSegnalazione = new Date().toLocaleTimeString('it-IT');
-            const channelId = '1521601801227604038';
-            const staffRoleId = '1518557087347638403';
+            const channelId = '1542488615232348220';
+            const staffRoleId = '1542488319739559957';
 
             const targetChannel = interaction.guild.channels.cache.get(channelId);
             if (!targetChannel) {
@@ -139,7 +139,7 @@ Un cittadino ha inoltrato una segnalazione d'assistenza immediata direttamente d
 ⚠️ **Istruzioni per il Team Staff:**
 Un membro abilitato del team è pregato di entrare in gioco il prima possibile, verificare l'accaduto e moderare la situazione per garantire il corretto svolgimento della simulazione.
 
-Italian Country • Centrale Notifiche Staff`
+Molise RP • Centrale Notifiche Staff`
                 );
 
             await targetChannel.send({
@@ -188,11 +188,11 @@ Italian Country • Centrale Notifiche Staff`
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
-`### Italian Country — SERVER APERTO
+`### Molise RP — SERVER APERTO
 
 <:emoji:1524957824315031703> **SSU - SERVER START UP**
 
-<:verified1:1521587794340872193> **Nome Server:** \`Italian Country\`
+<:verified1:1521587794340872193> **Nome Server:** \`Molise RP\`
 <:key:1521593933271007465> **Codice Accesso:** \`${codiceAccesso}\`
 
 ──────────────────────────
@@ -228,7 +228,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             );
 
             await interaction.reply({ 
-                content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Italian Country!', 
+                content: '@everyone Server Online — <:verified1:1521587794340872193> Vi Aspettiamo su Molise RP!', 
                 embeds: [embed], 
                 components: [row] 
             });
@@ -241,7 +241,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             const customEmoji = '<:emoji_custom:1524956959944474624>';
 
             const embedDescription = 
-`### Italian Country — SERVER CHIUSO
+`### Molise RP — SERVER CHIUSO
 
 ${customEmoji} **SSD - SERVER SHUT DOWN**
 
@@ -261,7 +261,7 @@ Ci vediamo alla prossima apertura.
                 .setImage(BANNER_SSD);
 
             await interaction.reply({ 
-                content: `@everyone Server Chiuso — Grazie per la partecipazione su Italian Country!`, 
+                content: `@everyone Server Chiuso — Grazie per la partecipazione su Molise RP!`, 
                 embeds: [embed] 
             });
             return;
@@ -272,11 +272,11 @@ Ci vediamo alla prossima apertura.
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
-`### Italian Country RP [ER:LC] — SERVER APERTO
+`### Molise RP [ER:LC] — SERVER APERTO
 
 <:emoji:1524957824315031703> **SSU - SERVER START UP**
 
-<:verified1:1521587794340872193> **Nome Server:** \`Italian Country RP [ER:LC]\`
+<:verified1:1521587794340872193> **Nome Server:** \`Molise RP [ER:LC]\`
 
 ──────────────────────────
 Entrate in gioco, ricordiamo di seguire il nostro **regolamento** Ufficiale.
@@ -299,7 +299,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
                 .setImage(BANNER_SSU);
 
             await interaction.reply({ 
-                content: '@everyone Server Online (ER:LC) — <:verified1:1521587794340872193> Vi Aspettiamo su Italian Country RP [ER:LC]!', 
+                content: '@everyone Server Online (ER:LC) — <:verified1:1521587794340872193> Vi Aspettiamo su Molise RP [ER:LC]!', 
                 embeds: [embed] 
             });
             return;
@@ -311,7 +311,7 @@ La Moderazione è **Presente e Attiva** Per Assistenza !
             const customEmoji = '<:emoji_custom:1524956959944474624>';
 
             const embedDescription = 
-`### Italian Country RP [ER:LC] — SERVER CHIUSO
+`### Molise RP [ER:LC] — SERVER CHIUSO
 
 ${customEmoji} **SSD - SERVER SHUT DOWN**
 
@@ -331,7 +331,7 @@ Ci vediamo alla prossima apertura.
                 .setImage(BANNER_SSD);
 
             await interaction.reply({ 
-                content: `@everyone Server Chiuso (ER:LC) — Grazie per la partecipazione su Italian Country RP [ER:LC]!`, 
+                content: `@everyone Server Chiuso (ER:LC) — Grazie per la partecipazione su Molise RP [ER:LC]!`, 
                 embeds: [embed] 
             });
             return;
