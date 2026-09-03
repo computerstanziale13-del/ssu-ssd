@@ -184,7 +184,7 @@ Molise RP • Centrale Notifiche Staff`
 
         // --- COMANDO SSU EMERGENCY HAMBURG ---
         if (interaction.commandName === 'ssu') {
-            const codiceAccesso = '1unzu600'; 
+            const codiceAccesso = '06zx6fba'; 
             const oraApertura = new Date().toLocaleTimeString('it-IT');
 
             const embedDescription = 
